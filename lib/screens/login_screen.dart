@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:social_demo_ui/screens/home_screen.dart';
 import 'package:social_demo_ui/widgets/curve_clipper.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Container(
+        child: SizedBox(
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
@@ -73,7 +74,12 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               const SizedBox(height: 40.0),
               GestureDetector(
-                onTap: () {},
+                onTap: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const HomeScreen(),
+                  ),
+                ),
                 child: Container(
                   height: 45.0,
                   margin: const EdgeInsets.symmetric(horizontal: 60.0),
