@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_demo_ui/data/data.dart';
+import 'package:social_demo_ui/widgets/custom_drawer.dart';
 import 'package:social_demo_ui/widgets/following_users.dart';
 import 'package:social_demo_ui/widgets/posts_carousel.dart';
 
@@ -55,6 +56,12 @@ class _HomeScreenState extends State<HomeScreen>
           ),
           unselectedLabelStyle: const TextStyle(fontSize: 18.0),
         ),
+      ),
+      drawer: Container(
+        color: Colors.white,
+        width: MediaQuery.of(context).size.width * 0.85,
+        height: double.infinity,
+        child: const CustomDrawer(),
       ),
       body: ListView(
         children: [
