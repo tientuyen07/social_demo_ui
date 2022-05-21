@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:social_demo_ui/data/data.dart';
 import 'package:social_demo_ui/widgets/following_users.dart';
+import 'package:social_demo_ui/widgets/posts_carousel.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,11 +14,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
+  late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+    _pageController = PageController(initialPage: 0, viewportFraction: 0.8);
   }
 
   @override
@@ -52,7 +56,16 @@ class _HomeScreenState extends State<HomeScreen>
           unselectedLabelStyle: const TextStyle(fontSize: 18.0),
         ),
       ),
-      body: const FollowingUsers(),
+      body: ListView(
+        children: [
+          const FollowingUsers(),
+          PostsCarousel(
+            pageController: _pageController,
+            title: 'Posts',
+            posts: posts,
+          ),
+        ],
+      ),
     );
   }
 }
